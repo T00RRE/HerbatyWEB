@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TeaWorld</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+        /* Drobna poprawka, żeby stopka była zawsze na dole */
+        body { display: flex; min-height: 100vh; flex-direction: column; }
+        main { flex: 1 0 auto; }
+        .brand-logo { padding-left: 20px !important; }
+    </style>
+</head>
+<body>
+
+    <nav class="teal lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo"><i class="material-icons">local_cafe</i>TeaWorld</a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Strona Główna</a></li>
+                <li>
+                    <a asp-controller="Koszyk" asp-action="Index">
+                        <i class="material-icons left">shopping_cart</i>Koszyk
+                    </a>
+                </li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="/">Strona Główna</a></li>
+                <li><a asp-controller="Koszyk" asp-action="Index">Koszyk</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <main class="container section">
+        @RenderBody()
+    </main>
+
+    <footer class="page-footer teal lighten-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">TeaWorld</h5>
+                    <p class="grey-text text-lighten-4">Najlepsze herbaty w sieci.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2024 TeaWorld
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            M.AutoInit();
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

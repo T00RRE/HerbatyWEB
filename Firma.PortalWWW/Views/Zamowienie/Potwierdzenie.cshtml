@@ -1,0 +1,41 @@
+﻿@model Firma.Data.Data.Zamowienie
+@{
+    ViewData["Title"] = "Adres Dostawy";
+}
+
+<h2>Dane do wysyłki</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Potwierdzenie">
+            <div class="input-field">
+                <input asp-for="Imie" class="validate" required />
+                <label asp-for="Imie">Imię</label>
+            </div>
+            <div class="input-field">
+                <input asp-for="Nazwisko" class="validate" required />
+                <label asp-for="Nazwisko">Nazwisko</label>
+            </div>
+            <div class="input-field">
+                <input asp-for="Ulica" class="validate" required />
+                <label asp-for="Ulica">Ulica i numer</label>
+            </div>
+            <div class="input-field">
+                <input asp-for="KodPocztowy" class="validate" required />
+                <label asp-for="KodPocztowy">Kod Pocztowy</label>
+            </div>
+            <div class="input-field">
+                <input asp-for="Miasto" class="validate" required />
+                <label asp-for="Miasto">Miasto</label>
+            </div>
+            <div class="input-field">
+                <input asp-for="Telefon" class="validate" />
+                <label asp-for="Telefon">Telefon (opcjonalnie)</label>
+            </div>
+
+            <button type="submit" class="btn btn-large waves-effect waves-light teal">
+                Kupuję i Płacę <i class="material-icons right">payment</i>
+            </button>
+        </form>
+    </div>
+</div>

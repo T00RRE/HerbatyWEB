@@ -1,0 +1,30 @@
+﻿@model Firma.Data.Data.Aktualnosc
+@{
+    ViewData["Title"] = "Dodaj News";
+}
+
+<h1>Nowa Aktualność</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div class="form-group mb-3">
+                <label class="control-label">Tytuł Linku (krótki)</label>
+                <input asp-for="TytulOdnosnika" class="form-control" placeholder="np. Promocja" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Tytuł Treści (Nagłówek)</label>
+                <input asp-for="TytulTresci" class="form-control" placeholder="np. Wielka wyprzedaż zimowa!" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Treść</label>
+                <textarea asp-for="Tresc" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Pozycja (kolejność wyświetlania)</label>
+                <input asp-for="Pozycja" class="form-control" type="number" value="1" />
+            </div>
+            <button type="submit" class="btn btn-success">Zapisz</button>
+        </form>
+    </div>
+</div>

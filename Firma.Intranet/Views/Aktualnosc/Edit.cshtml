@@ -1,0 +1,47 @@
+﻿@model Firma.Data.Data.Aktualnosc
+
+@{
+    ViewData["Title"] = "Edycja Aktualności";
+}
+
+<h1>Edytuj Aktualność</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+
+            <input type="hidden" asp-for="IdAktualnosci" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Tytuł Linku</label>
+                <input asp-for="TytulOdnosnika" class="form-control" />
+                <span asp-validation-for="TytulOdnosnika" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Tytuł Treści</label>
+                <input asp-for="TytulTresci" class="form-control" />
+                <span asp-validation-for="TytulTresci" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Treść</label>
+                <textarea asp-for="Tresc" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Tresc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Pozycja</label>
+                <input asp-for="Pozycja" class="form-control" />
+                <span asp-validation-for="Pozycja" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Zapisz zmiany" class="btn btn-warning" />
+                <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>

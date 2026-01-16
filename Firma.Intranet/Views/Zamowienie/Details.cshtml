@@ -1,0 +1,45 @@
+﻿@model Firma.Data.Data.Zamowienie
+@{
+    ViewData["Title"] = "Szczegóły Zamówienia";
+}
+
+<h2>Zamówienie nr @Model.IdZamowienia</h2>
+<div class="card mb-4">
+    <div class="card-header">Dane wysyłkowe</div>
+    <div class="card-body">
+        <p><strong>Klient:</strong> @Model.Imie @Model.Nazwisko</p>
+        <p><strong>Adres:</strong> @Model.Ulica, @Model.KodPocztowy @Model.Miasto</p>
+        <p><strong>Telefon:</strong> @Model.Telefon</p>
+    </div>
+</div>
+
+<h3>Zawartość paczki:</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Towar</th>
+            <th>Ilość</th>
+            <th>Cena zakupu</th>
+            <th>Wartość</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var poz in Model.PozycjeZamowienia)
+        {
+            <tr>
+                <td>@poz.Towar.Nazwa</td>
+                <td>@poz.Ilosc</td>
+                <td>@poz.Cena zł</td>
+                <td>@(poz.Ilosc* poz.Cena) zł</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right"><strong>RAZEM DO ZAPŁATY:</strong></td>
+            <td><strong>@Model.Razem zł</strong></td>
+        </tr>
+    </tfoot>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>

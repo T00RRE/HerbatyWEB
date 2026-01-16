@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Panel Administracyjny";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Witaj w Panelu Firmy</h1>
+    <p class="lead">Wybierz moduł, którym chcesz zarządzać.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-primary">
+            <div class="card-header bg-primary text-white">
+                <h4 class="my-0 font-weight-normal">Kategorie</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Zarządzaj rodzajami herbat</h5>
+                <p class="card-text">Tutaj możesz dodawać nowe kategorie herbat, edytować ich nazwy oraz usuwać te nieużywane.</p>
+                <a asp-controller="Rodzaj" asp-action="Index" class="btn btn-outline-primary mt-auto btn-lg">
+                    Przejdź do Kategorii &raquo;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-success">
+            <div class="card-header bg-success text-white">
+                <h4 class="my-0 font-weight-normal">Towary</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Katalog Produktów</h5>
+                <p class="card-text">Główny magazyn. Dodawaj nowe herbaty, zmieniaj ceny, dodawaj zdjęcia i opisy produktów.</p>
+                <a asp-controller="Towar" asp-action="Index" class="btn btn-outline-success mt-auto btn-lg">
+                    Przejdź do Towarów &raquo;
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="my-0 font-weight-normal">Aktualności</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Moduł CMS</h5>
+                <p class="card-text">Publikuj ogłoszenia i newsy widoczne na stronie głównej sklepu.</p>
+                <a asp-controller="Aktualnosc" asp-action="Index" class="btn btn-outline-warning mt-auto btn-lg text-dark">
+                    Zarządzaj Newsami &raquo;
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-info">
+            <div class="card-header bg-info text-white">
+                <h4 class="my-0 font-weight-normal">Zamówienia</h4>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Sprzedaż</h5>
+                <p class="card-text">Przeglądaj nowe zamówienia, sprawdzaj adresy wysyłkowe i zawartość paczek.</p>
+                <a asp-controller="Zamowienie" asp-action="Index" class="btn btn-outline-info mt-auto btn-lg">
+                    Zobacz Zamówienia &raquo;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

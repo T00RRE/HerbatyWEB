@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Firma.Data.Data.Zamowienie>
+@{
+    ViewData["Title"] = "Zamówienia";
+}
+
+<h1>Zamówienia Klientów</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Klient</th>
+            <th>Adres</th>
+            <th>Kwota</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DataZamowienia.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@item.Imie @item.Nazwisko</td>
+                <td>@item.Miasto, @item.Ulica</td>
+                <td><strong>@item.Razem zł</strong></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdZamowienia" class="btn btn-info btn-sm">Szczegóły</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

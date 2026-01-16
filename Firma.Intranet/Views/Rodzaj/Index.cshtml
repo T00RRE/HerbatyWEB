@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Firma.Data.Data.Rodzaj>
+
+@{
+    ViewData["Title"] = "Lista Rodzajów";
+}
+
+<h1>Rodzaje Herbat</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nowy rodzaj</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nazwa</td>
+                <td>@item.Opis</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdRodzaju" class="btn btn-sm btn-warning">Edytuj</a> |
+
+                    <a asp-action="Delete" asp-route-id="@item.IdRodzaju" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Czy na pewno chcesz usunąć tę kategorię?');">
+                        Usuń
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

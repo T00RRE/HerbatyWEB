@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Firma.Data.Data.Aktualnosc>
+@{
+    ViewData["Title"] = "Aktualności";
+}
+
+<h1>Zarządzanie Aktualnościami</h1>
+<p><a asp-action="Create" class="btn btn-primary">Dodaj nową aktualność</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tytuł (Nagłówek)</th>
+            <th>Pozycja</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <strong>@item.TytulTresci</strong><br />
+                    <small class="text-muted">Link: @item.TytulOdnosnika</small>
+                </td>
+                <td>@item.Pozycja</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAktualnosci" class="btn btn-warning btn-sm">Edytuj</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdAktualnosci" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Czy na pewno usunąć?');">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Wróć do Panelu</a>

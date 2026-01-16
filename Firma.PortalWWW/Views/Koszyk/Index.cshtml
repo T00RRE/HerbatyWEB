@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Firma.Data.Data.ElementKoszyka>
+
+@{
+    ViewData["Title"] = "Twój Koszyk";
+}
+
+<h1>Twój Koszyk</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Towar</th>
+            <th>Ilość</th>
+            <th>Cena jedn.</th>
+            <th>Wartość</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Towar.Nazwa</td>
+                <td>@item.Ilosc</td>
+                <td>@item.Towar.Cena zł</td>
+                <td>@(item.Ilosc* item.Towar.Cena) zł</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right"><strong>RAZEM:</strong></td>
+            <td>
+                <strong>@Model.Sum(x => x.Ilosc * x.Towar.Cena) zł</strong>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<a href="/" class="btn btn-secondary">Kontynuuj zakupy</a>
+<a asp-controller="Zamowienie" asp-action="Potwierdzenie" class="btn btn-success">Przejdź do kasy</a>
