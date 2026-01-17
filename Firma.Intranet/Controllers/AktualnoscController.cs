@@ -47,7 +47,7 @@ namespace Firma.Intranet.Controllers
         {
             if (id != aktualnosc.IdAktualnosci)
             {
-                return NotFound(); //404
+                return NotFound(); 
             }
 
             if (ModelState.IsValid)

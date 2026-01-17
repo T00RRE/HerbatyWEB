@@ -26,7 +26,7 @@ namespace Firma.Intranet.Controllers
             if (!string.IsNullOrEmpty(szukanaFraza))
             {
                 towary = towary.Where(t => t.Nazwa.Contains(szukanaFraza) || t.Kod.Contains(szukanaFraza));
-                ViewBag.Fraza = szukanaFraza; // Żeby zapamiętać wpisany tekst w polu
+                ViewBag.Fraza = szukanaFraza;
             }
 
             // 3. Filtruj po kategorii (jeśli wybrano)
@@ -36,7 +36,6 @@ namespace Firma.Intranet.Controllers
             }
 
             // 4. Załaduj listę kategorii do dropdowna
-            // Pobieramy rodzaje do listy, żeby admin mógł wybrać z "pełnej puli"
             ViewBag.Rodzaje = new SelectList(_context.Rodzaj, "IdRodzaju", "Nazwa", idRodzaju);
 
             // 5. Wykonaj i zwróć wynik
@@ -46,8 +45,6 @@ namespace Firma.Intranet.Controllers
         // 2. Formularz dodawania
         public IActionResult Create()
         {
-            // Pakujemy listę kategorii do "worka", żeby widok mógł z niej zrobić Dropdown
-            // (Co bierzemy, Co jest wartością w tle [ID], Co widzi człowiek [Nazwa])
             ViewBag.ListaRodzajow = new SelectList(_context.Rodzaj, "IdRodzaju", "Nazwa");
 
             return View();

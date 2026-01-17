@@ -8,7 +8,6 @@ namespace Firma.Intranet.Controllers
     {
         private readonly FirmaContext _context;
 
-        // Konstruktor - tu wstrzykujemy bazę danych
         public RodzajController(FirmaContext context)
         {
             _context = context;
@@ -60,15 +59,15 @@ namespace Firma.Intranet.Controllers
             }
             return View(aktualnosc);
         }
-        // 3. Akcja zapisu (Odbiera dane z formularza)
+        // 3. Akcja zapisu
         [HttpPost]
         public IActionResult Create(Rodzaj rodzaj)
         {
             if (ModelState.IsValid)
             {
-                _context.Rodzaj.Add(rodzaj); // Dodaj do pamięci
-                _context.SaveChanges();      // Zapisz w SQL
-                return RedirectToAction("Index"); // Wróć do listy
+                _context.Rodzaj.Add(rodzaj); 
+                _context.SaveChanges();      
+                return RedirectToAction("Index"); 
             }
             return View(rodzaj);
         }

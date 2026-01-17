@@ -13,7 +13,7 @@ namespace Firma.Data.Data
         public int Ilosc { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Cena { get; set; } // Cena w momencie zakupu (bo cena towaru może się zmienić!)
+        public decimal Cena { get; set; }
 
         [ForeignKey("IdZamowienia")]
         public virtual Zamowienie Zamowienie { get; set; }

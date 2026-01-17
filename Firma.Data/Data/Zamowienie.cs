@@ -30,11 +30,9 @@ namespace Firma.Data.Data
 
         public string Telefon { get; set; }
 
-        // Łączna kwota do zapłaty
         [Column(TypeName = "decimal(18,2)")]
         public decimal Razem { get; set; }
 
-        // Relacja: Jedno zamówienie ma wiele pozycji
         public virtual ICollection<PozycjaZamowienia> PozycjeZamowienia { get; set; }
     }
 }

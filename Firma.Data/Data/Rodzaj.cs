@@ -13,7 +13,6 @@ namespace Firma.Data.Data
 
         public string Opis { get; set; }
 
-        // Relacja: Jeden rodzaj ma wiele towarów
         public virtual ICollection<Towar>? Towary { get; set; }
     }
 }

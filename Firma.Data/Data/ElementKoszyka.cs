@@ -9,7 +9,7 @@ namespace Firma.Data.Data
         [Key]
         public int IdElementuKoszyka { get; set; }
 
-        public string IdSesjiKoszyka { get; set; } // To pozwoli rozpoznać klienta bez logowania
+        public string IdSesjiKoszyka { get; set; } 
 
         public DateTime DataUtworzenia { get; set; }
 

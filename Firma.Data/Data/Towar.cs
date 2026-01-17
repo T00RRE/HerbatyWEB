@@ -15,14 +15,13 @@ namespace Firma.Data.Data
         public string Nazwa { get; set; }
 
         [Required(ErrorMessage = "Cena jest wymagana")]
-        [Column(TypeName = "decimal(18,2)")] // Ważne dla cen!
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Cena { get; set; }
 
         public string Opis { get; set; }
 
-        public string FotoURL { get; set; } // Ścieżka do zdjęcia
+        public string FotoURL { get; set; } 
 
-        // Relacja: Towar należy do Rodzaju
         public int IdRodzaju { get; set; }
         [ForeignKey("IdRodzaju")]
         public virtual Rodzaj? Rodzaj { get; set; }
