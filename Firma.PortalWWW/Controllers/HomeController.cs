@@ -30,7 +30,7 @@ namespace Firma.PortalWWW.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<IActionResult> Index(string szukanaFraza, int? idRodzaju)
+        public async Task<IActionResult> Index(string szukanaFraza, int? idRodzaju, int? id)
         {
             // ViewBag
             var kategorie = await _context.Rodzaj.ToListAsync();
@@ -38,8 +38,14 @@ namespace Firma.PortalWWW.Controllers
             ViewBag.Aktualnosci = await _context.Aktualnosc.OrderBy(a => a.Pozycja).ToListAsync();
             // AsQueryable 
             var zapytanie = _context.Towar
-                .Include(t => t.Rodzaj)
-                .AsQueryable();
+            .Include(t => t.Rodzaj)
+            .Include(t => t.TowarTagi)
+             .ThenInclude(tt => tt.Tag)   
+            .AsQueryable();
+            if (id != null)
+            {
+                zapytanie = zapytanie.Where(t => t.IdRodzaju == id);
+            }
 
             if (!string.IsNullOrEmpty(szukanaFraza))
             {

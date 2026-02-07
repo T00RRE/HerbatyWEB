@@ -33,11 +33,12 @@
 <div class="row">
 
     <div class="col s12 m9">
-        <div class="row">
+        <div class="row" style="display: flex; flex-wrap: wrap;">
             @foreach (var towar in Model)
             {
-                <div class="col s12 m4">
-                    <div class="card hoverable">
+                <div class="col s12 m4" style="margin-bottom: 20px;">
+                    <div class="card hoverable" style="height: 100%; display: flex; flex-direction: column;">
+
                         <div class="card-image">
                             <img src="/Content/Images/@towar.FotoURL"
                                  onerror="this.src='https://placehold.co/300x200?text=Brak+Zdjecia'"
@@ -47,16 +48,38 @@
                                 <i class="material-icons">add_shopping_cart</i>
                             </a>
                         </div>
-                        <div class="card-content">
+
+                        <div class="card-content" style="flex-grow: 1;">
                             <span class="card-title truncate" style="font-size: 1.2em">@towar.Nazwa</span>
                             <span class="teal-text font-weight-bold">@towar.Cena zł</span>
                         </div>
+
+                        @if (towar.TowarTagi != null && towar.TowarTagi.Any())
+                        {
+                            <div class="grey lighten-5" style="padding: 10px; border-top: 1px solid #e0e0e0; min-height: 50px;">
+                                @foreach (var tag in towar.TowarTagi.Select(tt => tt.Tag))
+                                {
+                                    string badgeClass = "grey lighten-1 white-text";
+                                    if (tag.Nazwa.ToLower().Contains("promocja")) { badgeClass = "red white-text"; }
+                                    else if (tag.Nazwa.ToLower().Contains("nowość")) { badgeClass = "green white-text"; }
+                                    else if (tag.Nazwa.ToLower().Contains("bio")) { badgeClass = "green lighten-2 white-text"; }
+                                    else if (tag.Nazwa.ToLower().Contains("hit")) { badgeClass = "orange black-text"; }
+
+                                    <span class="new badge @badgeClass" data-badge-caption="@tag.Nazwa"
+                                          style="float:none; margin-right: 5px; border-radius: 4px;"></span>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                        }
+
                     </div>
                 </div>
             }
         </div>
     </div>
-
+   
     <div class="col s12 m3">
         <h5 class="teal-text"><i class="material-icons left">announcement</i>Aktualności</h5>
 

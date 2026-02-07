@@ -49,7 +49,31 @@
                 <textarea asp-for="Opis" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
+            <div class="form-group mb-3">
+                <label class="control-label fw-bold">Wybierz Tagi:</label>
+                <div class="card p-3">
+                    @if (ViewBag.WszystkieTagi != null)
+                    {
+                        foreach (var tag in ViewBag.WszystkieTagi as List<Firma.Data.Data.Tag>)
+                        {
+                            bool jestPrzypisany = Model.TowarTagi != null &&
+                            Model.TowarTagi.Any(tt => tt.IdTagu == tag.IdTagu);
 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       name="wybraneTagi"
+                                       value="@tag.IdTagu"
+                                       id="tag_@tag.IdTagu"
+                                       @(jestPrzypisany ? "checked" : "") />
+                                <label class="form-check-label" for="tag_@tag.IdTagu">
+                                    @tag.Nazwa
+                                </label>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Zapisz zmiany" class="btn btn-success" />
                 <a asp-action="Index" class="btn btn-secondary">Powrót</a>

@@ -29,6 +29,7 @@ namespace Firma.Data.Data
         public string KodPocztowy { get; set; }
 
         public string Telefon { get; set; }
+        public string Email { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Razem { get; set; }

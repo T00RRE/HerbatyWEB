@@ -1,41 +1,53 @@
 ﻿@model Firma.Data.Data.Zamowienie
+
 @{
-    ViewData["Title"] = "Adres Dostawy";
+    ViewData["Title"] = "Dane do wysyłki";
 }
 
-<h2>Dane do wysyłki</h2>
+<h2>Finalizacja Zamówienia</h2>
 
 <div class="row">
     <div class="col-md-6">
         <form asp-action="Potwierdzenie">
-            <div class="input-field">
-                <input asp-for="Imie" class="validate" required />
-                <label asp-for="Imie">Imię</label>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Imie" class="control-label">Imię</label>
+                <input asp-for="Imie" class="form-control" required />
             </div>
-            <div class="input-field">
-                <input asp-for="Nazwisko" class="validate" required />
-                <label asp-for="Nazwisko">Nazwisko</label>
-            </div>
-            <div class="input-field">
-                <input asp-for="Ulica" class="validate" required />
-                <label asp-for="Ulica">Ulica i numer</label>
-            </div>
-            <div class="input-field">
-                <input asp-for="KodPocztowy" class="validate" required />
-                <label asp-for="KodPocztowy">Kod Pocztowy</label>
-            </div>
-            <div class="input-field">
-                <input asp-for="Miasto" class="validate" required />
-                <label asp-for="Miasto">Miasto</label>
-            </div>
-            <div class="input-field">
-                <input asp-for="Telefon" class="validate" />
-                <label asp-for="Telefon">Telefon (opcjonalnie)</label>
+            <div class="form-group mb-3">
+                <label asp-for="Nazwisko" class="control-label">Nazwisko</label>
+                <input asp-for="Nazwisko" class="form-control" required />
             </div>
 
-            <button type="submit" class="btn btn-large waves-effect waves-light teal">
-                Kupuję i Płacę <i class="material-icons right">payment</i>
-            </button>
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label">Adres Email (na ten adres wyślemy potwierdzenie)</label>
+                <input asp-for="Email" type="email" class="form-control" required placeholder="np. jan@kowalski.pl" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Ulica" class="control-label">Ulica i numer</label>
+                <input asp-for="Ulica" class="form-control" required />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Miasto" class="control-label">Miasto</label>
+                <input asp-for="Miasto" class="form-control" required />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="KodPocztowy" class="control-label">Kod Pocztowy</label>
+                <input asp-for="KodPocztowy" class="form-control" required />
+            </div>
+
+
+            <hr />
+            <h4>Do zapłaty: @ViewBag.Suma zł</h4>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Zamawiam z obowiązkiem zapłaty" class="btn btn-success btn-lg" />
+                <a asp-controller="Koszyk" asp-action="Index" class="btn btn-secondary">Wróć do koszyka</a>
+            </div>
         </form>
     </div>
 </div>

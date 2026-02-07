@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Firma.Data.Data.Tag>
+@{
+    ViewData["Title"] = "Lista Tagów";
+}
+
+<h2>Lista Tagów</h2>
+<p><a asp-action="Create" class="btn btn-primary">Dodaj nowy tag</a></p>
+<table class="table">
+    <thead>
+        <tr><th>Nazwa</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.Nazwa</td></tr>
+        }
+    </tbody>
+</table>

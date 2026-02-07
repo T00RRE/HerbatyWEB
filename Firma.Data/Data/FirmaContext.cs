@@ -16,5 +16,23 @@ namespace Firma.Data.Data
         public DbSet<ElementKoszyka> ElementKoszyka { get; set; }
         public DbSet<Zamowienie> Zamowienie { get; set; }
         public DbSet<PozycjaZamowienia> PozycjaZamowienia { get; set; }
+
+        public DbSet<Tag> Tag { get; set; }
+        public DbSet<TowarTag> TowarTag { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TowarTag>()
+                .HasKey(tt => new { tt.IdTowaru, tt.IdTagu });
+
+            modelBuilder.Entity<TowarTag>()
+                .HasOne(tt => tt.Towar)
+                .WithMany(t => t.TowarTagi)
+                .HasForeignKey(tt => tt.IdTowaru);
+
+            modelBuilder.Entity<TowarTag>()
+                .HasOne(tt => tt.Tag)
+                .WithMany(t => t.TowarTagi)
+                .HasForeignKey(tt => tt.IdTagu);
+        }
     }
 }

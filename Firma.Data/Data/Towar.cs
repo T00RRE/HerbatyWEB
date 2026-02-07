@@ -21,9 +21,11 @@ namespace Firma.Data.Data
         public string Opis { get; set; }
 
         public string FotoURL { get; set; } 
-
+                    
         public int IdRodzaju { get; set; }
         [ForeignKey("IdRodzaju")]
         public virtual Rodzaj? Rodzaj { get; set; }
+
+        public virtual ICollection<TowarTag> TowarTagi { get; set; }
     }
 }

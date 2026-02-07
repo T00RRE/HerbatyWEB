@@ -6,29 +6,30 @@
 
 <h1>Lista Herbat</h1>
 
-<p><a asp-action="Create" class="btn btn-primary">Dodaj nową herbatę</a></p>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nową herbatę</a>
+</p>
+
 <form asp-action="Index" method="get" class="mb-4 mt-4">
     <div class="row">
-
         <div class="col-md-4">
             <input type="text" name="szukanaFraza" class="form-control"
                    placeholder="Szukaj po nazwie lub kodzie..." value="@ViewBag.Fraza" />
         </div>
-
         <div class="col-md-4">
             <select name="idRodzaju" class="form-control" asp-items="ViewBag.Rodzaje">
                 <option value="">-- Wszystkie Kategorie --</option>
             </select>
         </div>
-
         <div class="col-md-4">
             <button type="submit" class="btn btn-primary">Szukaj</button>
             <a asp-action="Index" class="btn btn-secondary">Wyczyść</a>
         </div>
-
     </div>
 </form>
+
 <hr />
+
 <table class="table">
     <thead>
         <tr>
@@ -36,6 +37,8 @@
             <th>Cena</th>
             <th>Kategoria</th>
             <th>Zdjęcie (plik)</th>
+            <th>Tagi</th>
+            <th>Opcje</th>
         </tr>
     </thead>
     <tbody>
@@ -51,15 +54,23 @@
                     }
                     else
                     {
-
                         <span>Brak</span>
                     }
                 </td>
                 <td>@item.FotoURL</td>
-                
+
+                <td>
+                    @if (item.TowarTagi != null && item.TowarTagi.Any())
+                    {
+                        foreach (var powiazanie in item.TowarTagi)
+                        {
+                            <span class="badge bg-secondary">@powiazanie.Tag.Nazwa</span>
+                        }
+                    }
+                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdTowaru" class="btn btn-sm btn-warning">Edytuj</a> |
-
                     <a asp-action="Delete" asp-route-id="@item.IdTowaru" class="btn btn-sm btn-danger"
                        onclick="return confirm('Czy na pewno chcesz usunąć ten towar?');">
                         Usuń
